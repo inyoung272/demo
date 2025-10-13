@@ -2,7 +2,7 @@
     "use strict";
 
     // Spinner
-    var spinner = function () {
+    const spinner = function () {
         setTimeout(function () {
             if ($('#spinner').length > 0) {
                 $('#spinner').removeClass('show');
@@ -59,7 +59,7 @@
 
     // Typed Initiate
     if ($('.typed-text-output').length == 1) {
-        var typed_strings = $('.typed-text').text();
+        const typed_strings = $('.typed-text').text();
         var typed = new Typed('.typed-text-output', {
             strings: typed_strings.split(', '),
             typeSpeed: 100,
@@ -71,7 +71,7 @@
 
 
     // Modal Video
-    var $videoSrc;
+     $videoSrc;
     $('.btn-play').click(function () {
         $videoSrc = $(this).data("src");
     });
