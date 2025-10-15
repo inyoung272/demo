@@ -27,21 +27,22 @@
         </output>
     </div>
     <nav class="navbar navbar-expand-lg bg-white navbar-light fixed-top shadow py-lg-0 px-4 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a th:href="@{/}" class="navbar-brand d-block d-lg-none"> 
+            <h1 class="text-primary fw-bold m-0">ProMan</h1>
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-between py-4 py-lg-0" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="#home" class="nav-item nav-link active">홈페이지</a>
-                <a href="#about" class="nav-item nav-link">내 소개</a>
-                <a href="#skill" class="nav-item nav-link">기술경험</a>
-                <a href="#board" class="nav-item nav-link bg-secondary">게시판</a>
-                <a href="#project" class="nav-item nav-link">프로젝트</a>
-                <a href="#team" class="nav-item nav-link">팀원</a>
-                <a href="#contact" class="nav-item nav-link">연락하기</a>
-            </div>  
-            </a>
+                <a th:href="@{'/' + '#home'}" class="nav-item nav-link active">홈페이지</a>
+                <a th:href="@{'/' + '#about'}" class="nav-item nav-link">내 소개</a>
+                <a th:href="@{'/' + '#skill'}" class="nav-item nav-link">기술경험</a>
+                <a th:href="@{/article_list}" class="nav-item nav-link bg-secondary">게시판</a> 
+                <a th:href="@{'/' + '#project'}" class="nav-item nav-link">프로젝트</a>
+                <a th:href="@{'/' + '#team'}" class="nav-item nav-link">팀원</a>
+                <a th:href="@{'/' + '#contact'}" class="nav-item nav-link">연락하기</a>
+            </div>
         </div>
     </nav>
     <div class="container-fluid bg-light my-6 mt-0" id="home">
@@ -62,26 +63,15 @@
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    </div>
+                    <img class="img-fluid" th:src="@{/img/profile2.png}" alt="프로필 이미지">
+                </div>
             </div>
         </div>
     </div>
     <div class="container-xxl py-6" id="about">
         <div class="container">
             <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="d-flex flex-column align-items-center justify-content-center h-100 py-5 px-3">
-                        <div class="text-center bg-white shadow pt-5 px-3">
-                            <div class="d-flex flex-column align-items-center text-center me-4">
-                                <div class="years flex-shrink-0 text-center me-4">
-                                    <h1 class="display-1 mb-0">4</h1>
-                                    <h5 class="mb-0">Years</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s"> 
                     <h3 class="lh-base mb-0">"3D 모델링, 영상처리. 대학교 졸업까지 어엿한 이공계인을 목표로 열심히 달려왔습니다."</h3>
                     <p class="mb-4">저는 변두리 코드도 즐겨 쓰는 개발자입니다. 끊임없이 새로운 것을 배우고 도전하는 것이 저의 즐거움입니다. 수 년 동안 쌓고 닦은 저의 대표적인 장점은 다음과 같습니다.</p>
                     <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>학습 능력 : 새로운 기술 적용에 대한 총괄적 지식</p>
@@ -89,18 +79,119 @@
                     <p class="mb-3"><i class="far fa-check-circle text-primary me-3"></i>개발 능력 : AI 엔진/백엔드/서버 프로그래밍/깃허브</p>
                     <a class="btn btn-primary py-3 px-5 mt-3" th:href="@{/about_detailed}">상세 소개</a>
                 </div>
+                
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s"> 
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <img class="img-fluid rounded" th:src="@{/img/profile1.png}" alt="소개 이미지 1">
+                        </div>
+                        <div class="col-sm-6">
+                            <img class="img-fluid rounded" th:src="@{/img/profile2.png}" alt="소개 이미지 2">
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <h5 class="border-end pe-3 me-3 mb-0">개인슬로건</h5>
+                    </div>
+                    <p class="mb-4">'작은코드, 큰변화'</p>
+                    
+                    <div class="d-flex align-items-center mb-3">
+                        <h5 class="border-end pe-3 me-3 mb-0">개인개발/학습프로젝트(깃허브)</h5>
+                        <h2 class="text-primary fw-bold mb-0" data-toggle="counter-up">5</h2>
+                    </div>
+                    <p class="mb-0">SPRING_BOOT/C#/유니티/코딩테스트/리눅스서버</p>
+                </div>
             </div>
         </div>
     </div>
+    <div class="container-xxl py-6" id="skill">
+        <div class="container">
+            <h1 class="display-5 text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">기술 & 경험</h1>
+
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <h3 class="display-5 mb-5 mt-5">나의 기술들</h3>
+                    <p class="mb-5">
+                        주요 웹 사이트 개발, 리눅스 웹 서버 구축/운영을 통해 팀미팅을 통한 운영체제 서버 관리 외 다양한 프로그래밍 언어 학습, 최근에는 생성형 AI를 활용한
+                        폴리디언 콘텐츠 개발에 관심을 가지고 있습니다.
+                    </p>
+                    
+                    <div class="row g-5">
+                        <div class="col-sm-6">
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">HTML/CSS</h6> <h6 class="font-weight-bold">95%</h6> </div> <div class="progress"> <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">파이썬</h6> <h6 class="font-weight-bold">95%</h6> </div> <div class="progress"> <div class="progress-bar bg-info" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">SPRING BOOT</h6> <h6 class="font-weight-bold">85%</h6> </div> <div class="progress"> <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">자바스크립트</h6> <h6 class="font-weight-bold">80%</h6> </div> <div class="progress"> <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">연구 논문 제출(국내/외)</h6> <h6 class="font-weight-bold">90%</h6> </div> <div class="progress"> <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">JAVA</h6> <h6 class="font-weight-bold">95%</h6> </div> <div class="progress"> <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">Bootstrap</h6> <h6 class="font-weight-bold">70%</h6> </div> <div class="progress"> <div class="progress-bar bg-info" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">Wordpress</h6> <h6 class="font-weight-bold">75%</h6> </div> <div class="progress"> <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">리눅스 서버 구축/운영</h6> <h6 class="font-weight-bold">90%</h6> </div> <div class="progress"> <div class="progress-bar bg-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                            <div class="skill mb-4"> <div class="d-flex justify-content-between"> <h6 class="font-weight-bold">보고서 작성/발표</h6> <h6 class="font-weight-bold">100%</h6> </div> <div class="progress"> <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div> </div> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <ul class="nav nav-pills rounded border border-2 border-primary mb-5" id="pills-tab" role="tablist">
+                        <li class="nav-item w-50" role="presentation">
+                            <a class="nav-link w-100 py-3 fs-5 active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true" href="#tab-1">경험</a>
+                        </li>
+                        <li class="nav-item w-50" role="presentation">
+                            <a class="nav-link w-100 py-3 fs-5" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#tab-2" role="tab" aria-controls="tab-2" aria-selected="false" href="#tab-2">교육</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="pills-tabContent">
+                        <div id="tab-1" class="tab-pane fade show active p-0" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="row gy-5 gx-4">
+                                <div class="col-sm-6">
+                                    <h5 class="mb-1" style="word-break: break-word;">웹 프로그래밍 교육용 AI 챗봇 개발</h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">2000 - 2045</p>
+                                    <p class="mb-0">Apex Software Inc</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5 class="mb-1" style="word-break: break-word;">AI 기반 소스 코드 보안 분석 툴 개발</h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">2000 - 2045</p>
+                                    <p class="mb-0">Apex Software Inc</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-2" class="tab-pane fade p-0" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <div class="row gy-5 gx-4">
+                                <div class="col-sm-6">
+                                    <h5 class="mb-1" style="word-break: break-word;">XXX 대학교 코딩 테스트 특강 수료</h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">2000 - 2045</p>
+                                    <p class="mb-0">XXX 대학교</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5 class="mb-1" style="word-break: break-word;">기타 : 20XX 보안 프로젝트 개발 발표 우수논문 수상</h5>
+                                    <hr class="text-primary my-2">
+                                    <p class="text-primary mb-1">2000 - 2045</p>
+                                    <p class="mb-0">Apex Software Inc</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                </div>
+            </div>
+        </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script> 
     <script src="lib/wow/wow.min.js"></script>
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="lib/lightbox/lightbox.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script> 
     <script src="js/main.js"></script>
-    
+
 </body>
 </html>
