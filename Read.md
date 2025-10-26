@@ -8,7 +8,7 @@ This project is a starting point for a C# application.
 
 A few resources to get you started if this is your first flutter project:
 
--[프로젝트 메인 주소]()
+-[https://github.com/inyoung272/demo/tree/main]()
 
 ## DAY 1 환경 설정 및 깃허브 연동, C# 기초 살펴보기
 
