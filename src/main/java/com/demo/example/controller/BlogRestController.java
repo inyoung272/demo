@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
-@RestController // @Controller + @ResponseBody
+// @RestController // @Controller + @ResponseBody
 public class BlogRestController {
 
     // [수정됨] 1. 필드 선언 시 타입과 변수 이름 사이에 공백 추가

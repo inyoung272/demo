@@ -3,9 +3,7 @@ package com.model.service;
 import java.util.List;
 import com.model.domain.TestDB;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.model.domain.TestDB;
 import com.model.repository.TestRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -14,8 +12,6 @@ import lombok.RequiredArgsConstructor;
 
 public class TestService {
 
-    @Autowired
-    // final 키워드를 추가하여 생성자 주입의 대상임을 명확히 하고, @Autowired는 제거합니다.
     private final TestRepository testRepository;
 
     // findByName 메서드 본문 구조를 올바르게 수정했습니다.
