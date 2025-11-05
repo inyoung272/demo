@@ -16,9 +16,6 @@ public class BlogRestController {
     // [수정됨] 2. final 키워드를 사용하여 생성자 주입의 대상임을 명확히 함
     private final BlogService blogService;
 
-    // @PostMapping("/api/articles") // post 요청
-    // [수정됨] 3. @ModelAttribute 대신 @RequestBody 사용 권장 (REST API 표준)
-    // [수정됨] 4. 매개변수 타입과 변수 이름 사이에 공백 추가
     @PostMapping("/api/articles")
     public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request) {
 
