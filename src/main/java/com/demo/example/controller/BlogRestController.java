@@ -16,15 +16,16 @@ public class BlogRestController {
     // [수정됨] 2. final 키워드를 사용하여 생성자 주입의 대상임을 명확히 함
     private final BlogService blogService;
 
-    @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request) {
+    // @PostMapping("/api/articles")
+    // public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest
+    // request) {
 
-        // request 객체를 사용하여 블로그 서비스에 저장
-        Article savedArticle = blogService.save(request);
+    // // request 객체를 사용하여 블로그 서비스에 저장
+    // Article savedArticle = blogService.save(request);
 
-        return ResponseEntity.status(HttpStatus.CREATED) // HTTP 201 Created 반환
-                .body(savedArticle);
-    }
+    // return ResponseEntity.status(HttpStatus.CREATED) // HTTP 201 Created 반환
+    // .body(savedArticle);
+    // }
 
     @GetMapping("/favicon.ico")
     public void favicon() {

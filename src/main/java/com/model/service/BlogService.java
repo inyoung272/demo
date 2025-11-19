@@ -8,6 +8,8 @@ import com.model.domain.Article;
 import com.model.domain.Board;
 import com.model.repository.BlogRepository;
 import com.model.repository.BoardRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import lombok.RequiredArgsConstructor;
 
@@ -26,8 +28,13 @@ public class BlogService {
         return blogRepository2.findAll();
     }
 
-    public Article save(AddArticleRequest request) {
-        return blogRepository.save(request.toEntity());
+    // public Article save(AddArticleRequest request) {
+    // return blogRepository.save(request.toEntity());
+    // }
+
+    public Board save(AddArticleRequest request) {
+        // DTO가 없는 경우 이곳에 직접 구현 가능
+        return blogRepository2.save(request.toEntity());
     }
 
     // public Optional<Article> findById(Long id) { // 게시판 특정 글 조회
@@ -49,5 +56,13 @@ public class BlogService {
     public void delete(Long id) {
         blogRepository.deleteById(id);
     }
+
+    public Page<Board> findAll(Pageable pageable) {
+        return blogRepository2.findAll(pageable);
+    }
+
+    public Page<Board> searchByKeyword(String keyword, Pageable pageable) {
+        return blogRepository2.findByTitleContainingIgnoreCase(keyword, pageable);
+    } // LIKE 검색 제공(대소문자 무시)
 
 }

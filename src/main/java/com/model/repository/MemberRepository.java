@@ -1,9 +1,10 @@
 package com.model.repository;
 
+import com.model.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import com.model.domain.Article;
 
 @Repository
-public interface BlogRepository extends JpaRepository<Article, Long> {
+public interface MemberRepository extends JpaRepository<Member, Long> {
+    Member findByEmail(String email);
 }
