@@ -8,6 +8,9 @@ import com.model.domain.Article;
 import com.model.domain.Board;
 import com.model.repository.BlogRepository;
 import com.model.repository.BoardRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -45,12 +48,23 @@ public class BlogService {
         return blogRepository2.findById(id);
     }
 
-    public void update(Long id, AddArticleRequest request) {
-        Optional<Article> optionalArticle = blogRepository.findById(id); // 단일 글 조회
-        optionalArticle.ifPresent(article -> { // 값이 있으면
-            article.update(request.getTitle(), request.getContent()); // 값을 수정
-            blogRepository.save(article); // Article 객체에 저장
-        });
+    @Transactional
+    public Board update(Long id, AddArticleRequest request) {
+        // 1. 게시글 찾기 (Article인지 Board인지 본인 클래스명에 맞게 수정하세요)
+        Board article = blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 글이 없습니다: " + id));
+
+        // 2. [핵심 수정] 6개 정보를 모두 넣어줍니다.
+        article.update(
+                request.getTitle(), // 바꿀 제목
+                request.getContent(), // 바꿀 내용
+                article.getUser(), // [유지] 원래 작성자
+                article.getNewdate(), // [유지] 원래 날짜
+                article.getCount(), // [유지] 조회수
+                article.getLikec() // [유지] 좋아요
+        );
+
+        return article;
     }
 
     public void delete(Long id) {

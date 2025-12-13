@@ -36,8 +36,12 @@ public class Board {
     // [수정됨] 필드 선언 시 @Column 어노테이션이 @Builder 위에 있었습니다.
     // 이는 @Builder의 적용 범위에 영향을 주지 않으므로, Builder 어노테이션을 생성자 위에만 유지합니다.
 
-    public void update(String title, String content) { // 현재 객체 상태 업데이트
+    public void update(String title, String content, String user, String newdate, Long count, Long likec) {
         this.title = title;
         this.content = content;
+        this.user = user;
+        this.newdate = newdate;
+        this.count = count;
+        this.likec = likec;
     }
 }

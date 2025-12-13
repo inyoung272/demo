@@ -3,6 +3,8 @@ package com.model.service;
 import com.model.domain.Member;
 import com.model.repository.MemberRepository;
 
+import jakarta.validation.Valid;
+import org.springframework.validation.annotation.Validated;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional; // Optional 사용을 위해 필요
 
 @Service
+@Validated
 @Transactional // 트랜잭션 처리 (데이터 저장/수정 시 필수)
 @RequiredArgsConstructor
 public class MemberService { // 클래스 이름을 MemberService로 변경 (언더바 제거)
@@ -30,7 +33,7 @@ public class MemberService { // 클래스 이름을 MemberService로 변경 (언
     }
 
     // 회원 가입(저장) 로직
-    public Member saveMember(AddMemberRequest request) {
+    public Member saveMember(@Valid AddMemberRequest request) {
         validateDuplicateMember(request); // 1. 중복 체크
 
         // 2. 비밀번호 암호화

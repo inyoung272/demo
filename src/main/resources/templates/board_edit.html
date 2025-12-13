@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        
+        <h1 class="mt-5">블로그 게시판(new)</h1>
+
+        <div class="mt-4 p-4 bg-light rounded border">
+            <h2 class="text-primary">게시글을 수정합니다.</h2>
+            
+            <form th:action="@{/api/board_edit/{id}(id=${board.id})}" method="post" name="content">
+                <input type="hidden" name="_method" value="put">
+                
+                <div class="form-group">
+                    <label for="title">제목:</label>
+                    <input type="text" class="form-control" id="title" name="title" th:value="${board.title}" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">내용:</label>
+                    <textarea class="form-control" id="content" name="content" rows="5" required th:text="${board.content}"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">수정 완료</button>
+                <a href="/board_list" class="btn btn-secondary">취소</a>
+            </form>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="mt-5">
+            <h2>게시글 목록</h2>
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">ID</th>
+                        <th style="width: 30%;">제목</th>
+                        <th style="width: 60%;">내용</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${boards}">
+                        <td th:text="${item.id}"></td>
+                        <td th:text="${item.title}"></td>
+                        <td th:text="${item.content}"></td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(boards)}">
+                        <td colspan="3" class="text-center">게시글이 없습니다.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

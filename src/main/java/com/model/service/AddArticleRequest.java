@@ -21,8 +21,8 @@ public class AddArticleRequest {
                 .content(content)
                 .user(user)
                 .newdate(newdate)
-                .count(Long.parseLong(count))
-                .likec(Long.parseLong(like))
+                .count(0L)
+                .likec(0L)
                 .build();
     }
 }
